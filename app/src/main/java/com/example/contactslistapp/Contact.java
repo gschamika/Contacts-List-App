@@ -5,14 +5,12 @@ public class Contact {
     private String phoneNumber;
     private String address;
 
-    // Constructor
     public Contact(String name, String phoneNumber, String address) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
 
-    // Getters and setters
     public String getName() {
         return name;
     }

@@ -19,8 +19,9 @@
             android:gravity="center"
             android:text="A"
             android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
