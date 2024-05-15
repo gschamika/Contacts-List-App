@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/toolbar" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/profileLetter"
@@ -19,7 +20,7 @@
             android:textColor="@color/black"
             android:textSize="65dp"
             android:textStyle="bold"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="100dp"
             android:layout_gravity="center"/>
 
         <TextView
@@ -27,43 +28,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Name: "
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="35dp"
             android:textStyle="bold"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phone Number: "
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="25dp"
             android:textStyle="bold"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address: "
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="25dp"
             android:textStyle="bold"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/viewDob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Date of Birth: "
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="25dp"
             android:textStyle="bold"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:gravity="center"/>
     </LinearLayout>
 </RelativeLayout>

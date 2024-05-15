@@ -2,7 +2,10 @@ package com.example.contactslistapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 public class ContactDetailsActivity extends AppCompatActivity {
     private TextView profileLetter, viewName, viewPhone, viewAddress, viewDob;
@@ -12,6 +15,18 @@ public class ContactDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_details);
+
+        Toolbar toolbar2 = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar2);
+        getSupportActionBar().setTitle(null);
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         bundle = getIntent().getExtras();
         String name = bundle.getString("name");
