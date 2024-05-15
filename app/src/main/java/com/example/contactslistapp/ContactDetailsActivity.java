@@ -1,27 +1,30 @@
 package com.example.contactslistapp;
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ContactDetailsActivity extends AppCompatActivity {
-    private TextView nameTextView, phoneTextView;
+    private TextView profileLetter, viewName, viewPhone, viewAddress;
+    private Bundle bundle;
+    private String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contact_details);
+        setContentView(R.layout.activity_contact_details);
 
-        nameTextView = findViewById(R.id.viewName);
-        phoneTextView = findViewById(R.id.viewPhone);
+        bundle = getIntent().getExtras();
+        message = bundle.getString("key");
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            String name = intent.getStringExtra("contact_name");
-            String phone = intent.getStringExtra("contact_phone");
-            nameTextView.setText("Name: " + name);
-            phoneTextView.setText("Phone: " + phone);
-        }
+        profileLetter = findViewById(R.id.profileLetter);
+        viewName = findViewById(R.id.viewName);
+        viewPhone = findViewById(R.id.viewPhone);
+        viewAddress = findViewById(R.id.viewAddress);
+
+        profileLetter.setText(message);
+        viewName.setText("Name: " + message);
+        viewPhone.setText("Phone Number: " + message);
+        viewAddress.setText("Address: " + message);
     }
 }

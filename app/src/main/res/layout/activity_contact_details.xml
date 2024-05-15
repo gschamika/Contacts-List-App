@@ -9,12 +9,18 @@
         android:orientation="vertical"
         android:gravity="">
 
-        <!-- <ImageView
-            android:id="@+id/profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars"
-            android:layout_marginTop="40dp"/> -->
+        <TextView
+            android:id="@+id/profileLetter"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/custom_background"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/black"
+            android:textSize="45dp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/viewName"
@@ -23,7 +29,9 @@
             android:text="Name: "
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="35dp"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/viewPhone"
@@ -32,7 +40,9 @@
             android:text="Phone Number: "
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/viewAddress"
@@ -41,6 +51,8 @@
             android:text="Address: "
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
     </LinearLayout>
 </RelativeLayout>
