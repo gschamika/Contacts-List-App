@@ -1,11 +1,10 @@
 package com.example.contactslistapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +45,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerViewAdapter(contactArrayList, this);
         recyclerView.setAdapter(adapter);
+
+        // Add this inside onCreate after setting adapter
+        adapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Contact contact) { // Change parameter type to Contact
+                Intent intent = new Intent(MainActivity.this, ContactDetailsActivity.class);
+                intent.putExtra("contact_name", contact.getName());
+                intent.putExtra("contact_phone", contact.getPhoneNumber());
+                startActivity(intent);
+            }
+        });
     }
 }
 
