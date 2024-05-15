@@ -1,18 +1,18 @@
 package com.example.contactslistapp;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter adapter;
     private ArrayList<Contact> contactArrayList;
     private RecyclerView recyclerView;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         contactArrayList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerViewContacts);
+        searchView = findViewById(R.id.searchView);
 
         contactArrayList.add(new Contact("Kasun Perera", "076 458 6978", "15A, Vijaya Mawatha, Colombo 05", "January 12, 1999"));
         contactArrayList.add(new Contact("Lahiru Madhushan", "076 782 1458", "42, Sunil Place, Galle", "March 5, 1998"));
@@ -47,6 +48,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RecyclerViewAdapter(contactArrayList, this);
         recyclerView.setAdapter(adapter);
+
+        // Set up search functionality
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
     }
 }

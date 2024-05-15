@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,11 +13,13 @@ import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapter.ViewHolder> {
     private ArrayList<Contact> contactArrayList;
+    private ArrayList<Contact> contactArrayListFull;
     private Context context;
 
     public RecyclerViewAdapter(ArrayList<Contact> contactArrayList, Context context) {
         this.contactArrayList = contactArrayList;
         this.context = context;
+        contactArrayListFull = new ArrayList<>(contactArrayList);
     }
 
     @NonNull
@@ -55,6 +58,40 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
     public int getItemCount() {
         return contactArrayList.size();
     }
+
+    public Filter getFilter() {
+        return contactFilter;
+    }
+
+    private Filter contactFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Contact> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(contactArrayListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (Contact contact : contactArrayListFull) {
+                    if (contact.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(contact);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            contactArrayList.clear();
+            contactArrayList.addAll((ArrayList<Contact>) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView profileLetter, name, phone;
