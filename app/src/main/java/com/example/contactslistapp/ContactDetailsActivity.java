@@ -15,16 +15,18 @@ public class ContactDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_details);
 
         bundle = getIntent().getExtras();
-        message = bundle.getString("key");
+        String name = bundle.getString("name");
+        String phoneNumber = bundle.getString("phoneNumber");
+        String address = bundle.getString("address");
 
         profileLetter = findViewById(R.id.profileLetter);
         viewName = findViewById(R.id.viewName);
         viewPhone = findViewById(R.id.viewPhone);
         viewAddress = findViewById(R.id.viewAddress);
 
-        profileLetter.setText(message);
-        viewName.setText("Name: " + message);
-        viewPhone.setText("Phone Number: " + message);
-        viewAddress.setText("Address: " + message);
+        profileLetter.setText(name.substring(0, 1));
+        viewName.setText("Name: " + name);
+        viewPhone.setText("Phone Number: " + phoneNumber);
+        viewAddress.setText("Address: " + address);
     }
 }

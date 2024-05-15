@@ -32,6 +32,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
         holder.profileLetter.setText(contact.getprofileLetter().toString());
         holder.name.setText(contact.getName());
         holder.phone.setText(contact.getPhoneNumber());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Intent intent = new Intent(context, ContactDetailsActivity.class);
+                String name = contactArrayList.get(position).getName();
+                String phoneNumber = contactArrayList.get(position).getPhoneNumber();
+                String address = contactArrayList.get(position).getAddress();
+                intent.putExtra("name", name);
+                intent.putExtra("phoneNumber", phoneNumber);
+                intent.putExtra("address", address);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -53,7 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
                     int position = getBindingAdapterPosition();
                     Intent intent = new Intent(context, ContactDetailsActivity.class);
                     String value = String.valueOf(contactArrayList.get(position));
-                    intent.putExtra("key", value);
+                    intent.putExtra("name", value);
                     context.startActivity(intent);
                 }
             });
