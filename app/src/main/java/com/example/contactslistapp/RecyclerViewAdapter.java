@@ -41,9 +41,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
                 String name = contactArrayList.get(position).getName();
                 String phoneNumber = contactArrayList.get(position).getPhoneNumber();
                 String address = contactArrayList.get(position).getAddress();
+                String dob = contactArrayList.get(position).getDob();
                 intent.putExtra("name", name);
                 intent.putExtra("phoneNumber", phoneNumber);
                 intent.putExtra("address", address);
+                intent.putExtra("dob", dob);
                 context.startActivity(intent);
             }
         });
@@ -61,17 +63,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
             profileLetter = itemView.findViewById(R.id.profileLetter);
             name = itemView.findViewById(R.id.name);
             phone = itemView.findViewById(R.id.phone);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getBindingAdapterPosition();
-                    Intent intent = new Intent(context, ContactDetailsActivity.class);
-                    String value = String.valueOf(contactArrayList.get(position));
-                    intent.putExtra("name", value);
-                    context.startActivity(intent);
-                }
-            });
         }
     }
 }

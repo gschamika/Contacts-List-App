@@ -4,11 +4,13 @@ public class Contact {
     private String name;
     private String phoneNumber;
     private String address;
+    private String dob;
 
-    public Contact(String name, String phoneNumber, String address) {
+    public Contact(String name, String phoneNumber, String address, String dob) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.dob = dob;
     }
 
     public String getName() {
@@ -37,6 +39,14 @@ public class Contact {
 
     public Character getprofileLetter(){
         return name.charAt(0);
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 }
 
