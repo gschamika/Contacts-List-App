@@ -1,13 +1,16 @@
 package com.example.contactslistapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
@@ -52,8 +55,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
                 context.startActivity(intent);
             }
         });
+
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete Contact")
+                        .setMessage("Are you sure you want to delete this contact?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeContact(holder.getAdapterPosition());
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+            }
+        });
     }
 
+    private void removeContact(int position) {
+        contactArrayList.remove(position);
+        notifyItemRemoved(position);
+    }
     @Override
     public int getItemCount() {
         return contactArrayList.size();
@@ -95,11 +119,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView profileLetter, name, phone;
+        ImageButton deleteButton;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             profileLetter = itemView.findViewById(R.id.profileLetter);
             name = itemView.findViewById(R.id.name);
             phone = itemView.findViewById(R.id.phone);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }
