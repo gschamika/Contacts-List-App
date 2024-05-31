@@ -1,12 +1,15 @@
 package com.example.contactslistapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter adapter;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewContacts);
         searchView = findViewById(R.id.searchView);
+        ImageView add = findViewById(R.id.add);
 
         contactArrayList.add(new Contact("Kasun Perera", "076 458 6978", "15A, Vijaya Mawatha, Colombo 05", "January 12, 1999"));
         contactArrayList.add(new Contact("Lahiru Madhushan", "076 782 1458", "42, Sunil Place, Galle", "March 5, 1998"));
@@ -63,5 +67,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Set up add button functionality
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            String name = data.getStringExtra("name");
+            String phoneNumber = data.getStringExtra("phoneNumber");
+            String address = data.getStringExtra("address");
+            String dob = data.getStringExtra("dob");
+
+            Contact newContact = new Contact(name, phoneNumber, address, dob);
+            contactArrayList.add(newContact);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
 }
