@@ -47,12 +47,12 @@
         </LinearLayout>
 
     </LinearLayout>
-    <ImageButton
+    <ImageView
         android:id="@+id/deleteButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="330dp"
         android:layout_gravity="center_vertical"
-        android:src="@android:drawable/ic_delete"
+        android:src="@drawable/delete"
         android:background="?attr/selectableItemBackgroundBorderless"/>
 </androidx.cardview.widget.CardView>
