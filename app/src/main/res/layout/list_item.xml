@@ -49,8 +49,8 @@
     </LinearLayout>
     <ImageView
         android:id="@+id/deleteButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginStart="330dp"
         android:layout_gravity="center_vertical"
         android:src="@drawable/delete"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +23,14 @@ public class AddContactActivity extends AppCompatActivity {
         editAddress = findViewById(R.id.editAddress);
         editDob = findViewById(R.id.editDob);
         saveButton = findViewById(R.id.saveButton);
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override

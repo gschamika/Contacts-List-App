@@ -5,7 +5,7 @@
     android:layout_height="65dp"
     android:layout_alignParentTop="true"
     android:layout_alignParentEnd="true"
-    android:background="#2196F3"
+    android:background="#2790EE"
     android:minHeight="?attr/actionBarSize"
     android:theme="?attr/actionBarTheme">
 
